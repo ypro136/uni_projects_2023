@@ -1,3 +1,6 @@
+#ifndef MUSIC_PLAYER_HEADER
+#define MUSIC_PLAYER_HEADER
+
 #include <iostream> 
 using namespace std;
 
@@ -25,6 +28,8 @@ private:
 
 	int count{ 0 };
 
+
+public:
 	Node* NodeAt(int index) {
 		Node* temp = head;
 		while (index != 0) {
@@ -34,8 +39,6 @@ private:
 
 		return temp;
 	}
-
-public:
 	void Insert(T value)		//Default Insert At The End.
 	{
 		Node* newNode = new Node(value);
@@ -186,10 +189,12 @@ public:
 private:
 	DLL<Music*>* musicList = new DLL<Music*>();
 
-	Music* currentSong = nullptr;
 
 	bool isPlaying = false;
+
+	bool text_update = true;
 public:
+	Music* currentSong = nullptr;
 
 	void AddMusic(Music* song)
 	{
@@ -205,9 +210,14 @@ public:
 	void Play() {
 		isPlaying = !isPlaying;
 		if (isPlaying)
-			cout << currentSong->songName << " is Playing Right Now..." << endl;
+		{
+			text_update = true;
+		}
 		else
-			cout << currentSong->songName << " is Paused Right Now..." << endl;
+		{
+			
+			text_update = true;
+		}
 	}
 
 	void PlayNextMusic() {
@@ -222,3 +232,5 @@ public:
 		Play();
 	}
 };
+
+#endif

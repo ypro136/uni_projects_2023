@@ -1,5 +1,5 @@
 C_SOURCES = $(wildcard classes/*.cpp *.cpp)
-HEADERS = $(wildcard *.hpp)
+HEADERS = $(wildcard *.hpp raylib/src/raylib.h)
 SAND_BOX= $(HOME)/SAND_BOX
 
 
@@ -16,7 +16,7 @@ main_app.o: main_app.cpp
 
 # First rule is run by default
 main_app.out: main_app.o ${HEADERS}
-	${CC} ${CFLAGS} $^ -o $@ 
+	${CC} ${CFLAGS} $^ -o $@ -I raylib/src/ -L raylib/src/ -lraylib
 
 
 run: main_app.out
