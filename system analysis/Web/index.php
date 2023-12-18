@@ -22,7 +22,7 @@
         mysqli_close($conn);
         
         if($error == '')
-           header("Location: {$user['user_type']}.php?username={$user['username']}");
+           header("Location: {$user['user_type']}.php?username={$user['username']} & id={$user['ID']}");
     }
 ?>
 
@@ -33,6 +33,7 @@
     <div class="login-container CENTERABS">
         <h2>Login</h2>
         <div style="color: red; display: inline;"><?php echo $error ?></div>
+        
         <form action="index.php" method="GET">
             <div class="form-group">
                 <label for="email">Email:</label>
